@@ -1,33 +1,31 @@
-# 🛡️ SentinelBox | Malware Analysis & SOC Sandbox
+# 🛡️ SentinelBox | Malware Analysis Sandbox
 
-**SentinelBox** es una plataforma interactiva de análisis estático de archivos e Indicadores de Compromiso (IOCs) diseñada para analistas de SOC (*Security Operations Center*) e investigadores de ciberseguridad. Ofrece una interfaz moderna en estilo *CyberDark* para examinar muestras sospechosas, analizar la entropía de los datos y generar reportes ejecutivos en PDF.
-
----
-
-## 🚀 Características Principales
-
-* **🔍 Análisis Estático de Archivos:** Cálculo automático de metadatos clave y firmas criptográficas (`MD5`, `SHA-1`, `SHA-256`).
-* **📊 Evaluación de Entropía Criptográfica:** Visualizaciones interactivas con Plotly para detectar ofuscación, empaquetado (*packers*) o contenido cifrado.
-* **⚠️ Extracción de IOCs & Veredicto:** Clasificación dinámica de nivel de amenaza (Limpio, Sospechoso, Crítico) e identificación de artefactos maliciosos.
-* **📄 Generación de Reportes PDF:** Exportación de informes técnicos listos para auditoría mediante **WeasyPrint**.
-* **🖥️ Interfaz SOC CyberDark:** Dashboard optimizado por pestañas con estética oscura de operaciones de seguridad.
+**SentinelBox** es un sandbox dinámico y estático de análisis de malware construido con **Streamlit** y diseñado para entornos de **SOC (Security Operations Center)** y **Threat Intelligence**. Permite a analistas e investigadores inspeccionar archivos sospechosos, extraer Indicadores de Compromiso (IOCs), mapear comportamientos con la matriz **MITRE ATT&CK** y enriquecer la investigación en tiempo real con **VirusTotal**.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## ✨ Características Principales
 
-* **Lenguaje:** Python 3.10+
-* **Frontend / Dashboard:** [Streamlit](https://streamlit.io/)
-* **Procesamiento de Datos & Gráficos:** Pandas, Plotly
-* **Motor de Reportes PDF:** WeasyPrint (requiere bibliotecas nativas C / GTK)
+* 🔑 **Inteligencia Global con VirusTotal:** Integración directa con la API v3 de VirusTotal mediante gestión segura de claves (*Streamlit Secrets* o entrada manual).
+* 🧪 **Análisis Estático Real:** 
+  * Cálculo instantáneo de hashes criptográficos (`MD5`, `SHA-1`, `SHA-256`).
+  * Análisis de **Entropía de Shannon** en tiempo real para detectar ofuscación, cifrado o empaquetado (e.g. UPX).
+  * Extracción automática de cadenas, direcciones IP, dominios C2 y URLs.
+* 🎯 **Matriz MITRE ATT&CK:** Mapeo automatizado de tácticas y técnicas detectadas durante el análisis.
+* ⚡ **Simulación de Comportamiento Dinámico:**
+  * Árbol de procesos ejecutados.
+  * Modificaciones en el Registro de Windows y sistema de archivos.
+  * Tráfico de red y peticiones DNS simuladas.
+  * Reglas de detección **YARA** y **Sigma**.
+* 📄 **Reportes Ejecutivos en PDF:** Exportación inmediata de informes listos para auditorías o incident response mediante **WeasyPrint**.
+* 🎨 **Interfaz CyberDark / SOC:** Panel visual optimizado para entornos de operaciones con tema oscuro personalizado e indicadores visuales de amenaza.
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🛠️ Requisitos Previos
 
-```text
-├── app.py              # Código principal de la aplicación Streamlit
-├── requirements.txt    # Dependencias de Python (Streamlit, Pandas, Plotly, WeasyPrint)
-├── packages.txt        # Dependencias nativas Linux para Streamlit Cloud (GTK/Pango)
-├── .gitignore          # Archivos excluidos del control de versiones
-└── README.md           # Documentación del proyecto
+Asegúrate de contar con Python 3.10+ y las dependencias del sistema requeridas para la compilación de reportes PDF (WeasyPrint).
+
+### Dependencias de Python
+```bash
+pip install streamlit pandas plotly requests weasyprint
