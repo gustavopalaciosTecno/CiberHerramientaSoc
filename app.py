@@ -196,11 +196,17 @@ def verify_digital_signature(filename):
 # ==========================================
 def generate_dynamic_sandbox_report(file_name, file_size, entropy):
     """Genera datos simulados pero coherentes de sandbox dinámico."""
-    base_score = 40
-    if entropy > 6.8:
+    base_score = 0  
+    suspicious_exts = (".exe", ".vbs", ".bat", ".ps1", ".dll", ".scr", ".sys", ".docm", ".xlsm")
+
+    # Solo suma puntos de entropía SI el archivo es un ejecutable o script
+    if entropy > 6.8 and file_name.lower().endswith(suspicious_exts):
         base_score += 35
-    if file_name.endswith((".exe", ".vbs", ".bat", ".ps1", ".dll", ".scr")):
+
+    # Suma puntos por ser un archivo con extensión potencialmente peligrosa
+    if file_name.lower().endswith(suspicious_exts):
         base_score += 15
+
     risk_score = min(base_score, 98)
 
     verdict = (
@@ -208,7 +214,7 @@ def generate_dynamic_sandbox_report(file_name, file_size, entropy):
         if risk_score >= 80
         else "SOSPECHOSO"
         if risk_score >= 50
-        else "BENIGNO"
+        else "BENIGNO (Seguro)"
     )
 
     mitre_attack = [
