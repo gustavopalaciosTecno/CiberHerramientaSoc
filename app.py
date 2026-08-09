@@ -680,6 +680,6 @@ else:
     # Vista previa estilo Dashboard
     st.markdown("### 📊 Estado de la Infraestructura de Análisis")
     col_m1, col_m2, col_m3 = st.columns(3)
-    col_m1.metric("Nodos de Ejecución Sandbox", "4 Activos", "Online")
-    col_m2.metric("Muestras Analizadas Hoy", "142", "+18%")
-    col_m3.metric("Firma de Amenazas Activas", "v2026.08.08", "Actualizado")
+    #col_m1.metric("Nodos de Ejecución Sandbox", "4 Activos", "Online")
+    #col_m2.metric("Muestras Analizadas Hoy", "142", "+18%")
+    #col_m3.metric("Firma de Amenazas Activas", "v2026.08.08", "Actualizado")
