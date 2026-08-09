@@ -678,7 +678,7 @@ else:
         "👆 Por favor, carga un archivo ejecutable, documento o script arriba para iniciar la secuencia de análisis.")
 
     # Vista previa estilo Dashboard
-    st.markdown("### 📊 Estado de la Infraestructura de Análisis")
+    #st.markdown("### 📊 Estado de la Infraestructura de Análisis")
     col_m1, col_m2, col_m3 = st.columns(3)
     #col_m1.metric("Nodos de Ejecución Sandbox", "4 Activos", "Online")
     #col_m2.metric("Muestras Analizadas Hoy", "142", "+18%")
