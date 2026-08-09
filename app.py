@@ -679,14 +679,33 @@ else:
 
     # Vista previa estilo Dashboard
     #st.markdown("### 📊 Estado de la Infraestructura de Análisis")
-    st.markdown("""
-    🚀 Características Principales
-🔍 Análisis Estático de Archivos: Cálculo automático de metadatos clave y firmas criptográficas (MD5, SHA-1, SHA-256).
-📊 Evaluación de Entropía Criptográfica: Visualizaciones interactivas con Plotly para detectar ofuscación, empaquetado (packers) o contenido cifrado.
-⚠️ Extracción de IOCs & Veredicto: Clasificación dinámica de nivel de amenaza (Limpio, Sospechoso, Crítico) e identificación de artefactos maliciosos.
-📄 Generación de Reportes PDF: Exportación de informes técnicos listos para auditoría mediante WeasyPrint.
-🖥️ Interfaz SOC CyberDark: Dashboard optimizado por pestañas con estética oscura de operaciones de seguridad.
-    """)
+    st.markdown("### 🚀 Características Principales")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown(
+            "**🔍 Análisis Estático de Archivos:** Cálculo automático de"
+            " metadatos clave y firmas criptográficas (`MD5`, `SHA-1`, `SHA-256`)."
+        )
+        st.markdown(
+            "**📊 Entropía Criptográfica:** Visualizaciones interactivas con Plotly"
+            " para detectar ofuscación, empaquetado o cifrado."
+        )
+        st.markdown(
+            "**⚠️ Extracción de IOCs & Veredicto:** Clasificación dinámica de"
+            " amenaza e identificación de artefactos maliciosos."
+        )
+
+    with col2:
+        st.markdown(
+            "**📄 Reportes PDF:** Exportación de informes técnicos listos para"
+            " auditoría mediante WeasyPrint."
+        )
+        st.markdown(
+            "**🖥️ Interfaz SOC CyberDark:** Dashboard optimizado por pestañas con"
+            " estética oscura de operaciones."
+        )
     col_m1, col_m2, col_m3 = st.columns(3)
     #col_m1.metric("Nodos de Ejecución Sandbox", "4 Activos", "Online")
     #col_m2.metric("Muestras Analizadas Hoy", "142", "+18%")
