@@ -196,7 +196,7 @@ def verify_digital_signature(filename):
 # ==========================================
 def generate_dynamic_sandbox_report(file_name, file_size, entropy):
     """Genera datos simulados pero coherentes de sandbox dinámico."""
-    base_score = 0  
+    base_score = 0
     suspicious_exts = (".exe", ".vbs", ".bat", ".ps1", ".dll", ".scr", ".sys", ".docm", ".xlsm")
 
     # Solo suma puntos de entropía SI el archivo es un ejecutable o script
@@ -217,6 +217,16 @@ def generate_dynamic_sandbox_report(file_name, file_size, entropy):
         else "BENIGNO (Seguro)"
     )
 
+    # Definir etiqueta y color visual del indicador según el puntaje real
+    if risk_score >= 80:
+        risk_badge_label = "↑ Riesgo Elevado"
+        risk_badge_color = "red"
+    elif risk_score >= 50:
+        risk_badge_label = "⚡ Riesgo Moderado"
+        risk_badge_color = "orange"
+    else:
+        risk_badge_label = "✓ Bajo Riesgo / Seguro"
+        risk_badge_color = "green"
     mitre_attack = [
         {
             "tactic": "Execution",
